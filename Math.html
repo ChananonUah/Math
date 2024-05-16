@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>เซิร์ฟเว็ปแก้สมการ</title>
+          <link href="style_1.css" rel="stylesheet">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300&display=swap" rel="stylesheet">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Iceberg&family=Pridi:wght@300&display=swap" rel="stylesheet">
+     </head>
+     <body>
+          <header>
+               <div class="top_head">
+                    <h1 class="text_head">Mathematics</h1>
+               </div>
+               <!-- <div style="float: right;" id="show_cal">
+                    <button class="tool_cal" onclick="create_calculator()"><img class="img_but1" src="https://cdn.icon-icons.com/icons2/317/PNG/512/calculator-icon_34473.png"></button>
+               </div> -->
+
+               <div class="box Math">
+                    <h1>แก้สมการดีกรี3</h1>
+                    <input type="number" id="num_21" class="input in1">
+                    <p style="display: inline-block;">x<sup>3</sup> + </p>
+                    <input type="number" id="num_22" class="input in1">
+                    <p style="display: inline-block;">x<sup>2</sup> + </p>
+                    <input type="number" id="num_23" class="input in1">
+                    <p style="display: inline-block;">x + </p>
+                    <input type="number" id="num_24" class="input in1">
+                    <p style="display: inline-block;">= 0 </p>
+                    <p>    
+                         <button id="run_but3" class="button ans">RESULT</button>
+                    </p>
+                    <div id="show_out3" class="box_ans">แสดงคำตอบที่นี่</div>
+               </div>
+
+               <div class="box Math">
+                    <h1>แก้สมการดีกรี2</h1>
+                    <input type="number" id="num_11" class="input in1">
+                    <p style="display: inline-block;">x<sup>2</sup> + </p>
+                    <input type="number" id="num_12" class="input in1">
+                    <p style="display: inline-block;">x + </p>
+                    <input type="number" id="num_13" class="input in1">
+                    <p style="display: inline-block;">= 0 </p>
+                    <p>    
+                         <button id="run_but1" class="button ans">RESULT</button>
+                    </p>
+                    <div id="show_out1" class="box_ans">แสดงคำตอบที่นี่</div>
+               </div>
+
+               <div class="box Math">
+                    <h1>ตัวประกอบของตัวเลข</h1>
+                    <p style="display: inline-block;">กรอกเลข :</p>
+                    <input type="number" id="num_need" class="input">
+                    <p>
+                         <button id="run_but2" class="button ans">RESULT</button>
+                    </p>
+                    <div id="show_out2" class="box_ans">แสดงคำตอบที่นี่</div>
+               </div>
+               
+               <div class="box Math">
+                    <h1>ตรรกศาสตร์</h1>
+                    <p>• ถ้าประพจน์เป็นจริงให้ใส่ T เป็นเท็จใส่ F</p>
+                    <p style="display: inline-block;">p =&nbsp</p>
+                    <input id="p" class="input in2">
+                    <p style="display: inline-block;">&nbspq =&nbsp</p>
+                    <input id="q" class="input in2">
+                    <p id="showprapoj" style="display: inline-block;"></p>
+                    <button style="display: inline-block;" class="button" id="addprapoj">add</button>
+                    <button class="button" id="delprapoj">del</button>
+                    <p><input type="text" id="joth" style="background-color: rgb(173, 255, 255);width: 100%;height: 40px;font-size: 30px;" disabled></p> 
+                    <p>  
+                         <input class="but_in" type="button" value="p" onclick="display1('p')" />
+                         <input class="but_in" type="button" value="q" onclick="display1('q')" />
+                         <input class="but_in" type="button" value="&#41" onclick="display1('&#41')" style="float: right"/>
+                         <input class="but_in" type="button" value="&#8596" onclick="display1('&#8596')" style="float: right;"/>
+                         <input class="but_in" type="button" value="&#8594" onclick="display1('&#8594')" style="float: right;"/>
+                         <input class="but_in" type="button" value="v" onclick="display1('v')" style="float: right;"/>
+                         <input class="but_in" type="button" value="∧" onclick="display1('∧')" style="float: right;"/>
+                         <input class="but_in" type="button" value="&#40" onclick="display1('&#40')" style="float: right;"/>
+                         <input class="but_in" type="button" value="~" onclick="display1('~')" style="float: right;"/>
+                         <div id="showprapoj_but"></div>
+                    </p>
+                    <input class="button reset" type="button" value="Reset" onclick="clearScreens()" />
+                    <button id="run_but4" class="button ans" style="margin-bottom: 20px;">RESULT</button>
+                    <div id="show_out4" class="box_ans">แสดงคำตอบที่นี่</div>
+               </div>
+          </div>
+          <script src="Math.js"></script> 
+     </body>
+</html>
