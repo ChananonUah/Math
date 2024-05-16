@@ -234,7 +234,8 @@ input:active[type=button] {
 
   .box {
     margin: auto;
-    margin-top: 15px;
+    margin-top: 30px;
+    margin-bottom: 10px;
     padding: 20px;
     justify-content: center;
   }
