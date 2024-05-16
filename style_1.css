@@ -233,7 +233,7 @@ input:active[type=button] {
   }
 
   .box {
-    margin: 20px;
+    margin: auto;
     padding: 20px;
     justify-content: center;
   }
