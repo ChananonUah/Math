@@ -169,14 +169,14 @@ function findation() {
       let count = result.length;
       let a = 0;
       let k = 0;
+      let num_line = "-";
       if (Number(numneed.value) > 0) { 
         while (count - a >= 1) {
           let b = result[a];
           let c = result[count - 1];
-          let num_line = "-";
-            for (let i = 0; i < (num_f).toString().length; i++) {
-              num_line += "-";
-            }
+          for (let i = 0; i < (num_f).toString().length; i++) {
+            num_line += "-";
+          }
           if (k == 0) {
             outHtml2 += '<p> ตัวประกอบของ' + num_f + ' : ( ' + b + ' , ' + c + ' ) </p>';
             k += 1;
