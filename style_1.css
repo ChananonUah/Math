@@ -13,14 +13,6 @@ body {
   font-weight: bolder;
 }
 
-.main {
-  width: 100%;
-  height: 150pv;
-  display: grid;
-  margin: auto;
-  justify-content: center;
-}
-
 .top_head {
   display: flex;
   background-color: #71C8E2;
@@ -75,6 +67,9 @@ body {
   border-radius: 35px;
   box-shadow: 10px 10px 20px 6px rgba(0, 0, 0, 1.5);
   color: black;
+  width: 700px;
+  max-width: 800px;
+  
 }
 
 .mentbox {
@@ -103,11 +98,6 @@ body {
 
 .mentin{
   height: 80px;
-}
-
-.Math {
-  width: 700px;
-  max-width: 800px;
 }
 
 .box_ans {
@@ -225,7 +215,6 @@ input:active[type=button] {
   margin: 5px;
 }
 
-/* เพิ่ม responsive styles สำหรับ mobile */
 @media screen and (max-width: 1000px) and (min-width: 500px) {
   .main {
     height: auto;
@@ -238,40 +227,6 @@ input:active[type=button] {
     margin-bottom: 10px;
     padding: 20px;
     justify-content: center;
-  }
-
-  .Math {
     width: 100%;
   }
-
-  .Chem {
-    width: 100%;
-  }
-  .tool_cal {
-      height: 60px;
-      left: 30px;
-      position: fixed;
-  }
-  .calculator {
-    height: 300px;
-    width: 320px;
-    margin: 10px;
-  }
-
-  .rocat_cal {
-      float: left;
-    }
-
-  .close_cal {
-    margin: 5px 0;
-  }
-
-  .tool_cal {
-    justify-self: center;
-  }
-
-  .img_but1 {
-    width: auto;
-  }
-  
 }
