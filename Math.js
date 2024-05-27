@@ -88,36 +88,32 @@ function calculation1() {
   let b = Number(get_num12.value);
   let c = Number(get_num13.value);
   let outHtml1 = '';
+  let upper_num1 = 0;
+  let lower_num1 = 0;
+  let upper_num2 = 0;
+  let lower_num2 = 0;
+  let sign1 = '-';
+  let sign2 = '-';
+
+  if (a == '') {
+    a = 1
+  }
+  if (b == '') {
+    b = 1
+  }
+  if (c == '') {
+    c = 1
+  }
 
   res = Math.sqrt((b ** 2) - (4 * a * c));
 
   x1 = (-b + res) / (2 * a);
   x2 = (-b - res) / (2 * a);
-if (!(Number.isInteger(x1))) {
+
   function simplifyFraction(numerator, denominator) {
-      const gcd = (a01, b01) => (b01 === 0 ? a01 : gcd(b01, a01 % b01));
-      const commonDivisor = gcd(numerator, denominator);
-      return [numerator / commonDivisor, denominator / commonDivisor];
-  }
-
-    const numerator = -b + res;
-    const denominator = 2 * a;
-
-    const simplifiedFraction = simplifyFraction(numerator, denominator);
-    x1 = `${simplifiedFraction[0]}/${simplifiedFraction[1]}`;
-  }
-  if (!(Number.isInteger(x2))) {
-    function simplifyFraction(numerator, denominator) {
-      const gcd = (a01, b01) => (b01 === 0 ? a01 : gcd(b01, a01 % b01));
-      const commonDivisor = gcd(numerator, denominator);
-      return [numerator / commonDivisor, denominator / commonDivisor];
-    }
-
-    const numerator = -b - res;
-    const denominator = 2 * a;
-
-    const simplifiedFraction = simplifyFraction(numerator, denominator);
-    x2 = `${simplifiedFraction[0]}/${simplifiedFraction[1]}`;
+    const gcd = (a01, b01) => (b01 === 0 ? a01 : gcd(b01, a01 % b01));
+    const commonDivisor = gcd(numerator, denominator);
+    return [numerator / commonDivisor, denominator / commonDivisor];
   }
 
   if ((b ** 2) - (4 * a * c) < 0) {
@@ -125,17 +121,91 @@ if (!(Number.isInteger(x1))) {
     return;
   }
 
-  if (x1 == x2) {
-    get_out.innerHTML = '<p>x = ' + x1 + '</p>';
-    return;
-  }
+  if (!(Number.isInteger(x1)) || !(Number.isInteger(x2))) {
+    if (!(Number.isInteger(x1))) {
+      const numerator = -b + res;
+      const denominator = 2 * a;
 
-  for (let i = 1; i <= 2; i++) {
-    if (i == 1) {
-      outHtml1 += '<p>x = ' + x1 + '</p>';
+      const simplifiedFraction = simplifyFraction(numerator, denominator);
+      x1 = `${simplifiedFraction[0]}/${simplifiedFraction[1]}`;
+      upper_num1 = simplifiedFraction[0];
+      lower_num1 = simplifiedFraction[1];
+      if (upper_num1 < 0 || lower_num1 < 0) {
+        sign1 = '+'
+        upper_num1 = Math.abs(upper_num1)
+        lower_num1 = Math.abs(lower_num1)
+      }
+
+      for (let i = 0; i < x1.length; i++) {
+        if (x1[i] == '-') {
+          x1 = x1.replace('-', '')
+          x1 = `-${x1}`
+          break
+        }
+      }
+
+      outHtml1 += `<p>แยกได้  : ( ${lower_num1}x ${sign1} ${upper_num1} ) `;
     }
     else {
-      outHtml1 += '<p>x = ' + x2 + '</p>';
+      if (x1 < 0) {
+        sign1 = '+'
+      }
+      outHtml1 += `<p>แยกได้  : ( x ${sign1} ${Math.abs(x1)} ) `;
+    }
+
+    if (!(Number.isInteger(x2))) {
+      const numerator = -b - res;
+      const denominator = 2 * a;
+
+      const simplifiedFraction = simplifyFraction(numerator, denominator);
+      x2 = `${simplifiedFraction[0]}/${simplifiedFraction[1]}`;
+      upper_num2 = simplifiedFraction[0];
+      lower_num2 = simplifiedFraction[1];
+      if (upper_num2 < 0 || lower_num2 < 0) {
+        sign2 = '+'
+        upper_num2 = Math.abs(upper_num2)
+        lower_num2 = Math.abs(lower_num2)
+      }
+
+      for (let i = 0; i < x1.length; i++) {
+        if (x2[i] == '-') {
+          x2 = x2.replaceAll('-', '')
+          x2 = `-${x2}`
+          break
+        }
+      }
+
+
+      outHtml1 +=`( ${lower_num2}x ${sign2} ${upper_num2} )</p><p>x = ${x1}</p><p>x = ${x2}</p>`;
+    }
+    else {
+      if (x2 < 0) {
+        sign2 = '+'
+      }
+      outHtml1 += `( x ${sign2} ${Math.abs(x2)} )</p><p>x = ${x1}</p><p>x = ${x2}</p>`;
+    }
+    // if (x1 == x2) {
+    //   get_out.innerHTML = `<p>(${upper_num1}x${sign1}${lower_num1})(${upper_num2}x${sign2}${lower_num2})</p><p>x = ${x1}</p>`;
+    //   return;
+    // }
+  }
+  
+  else {
+    if (x1 < 0) {
+      sign1 = '+'
+    }
+
+    if (x2 < 0) {
+      sign2 = '+'
+    }
+    
+    if (x1 == x2) {
+      get_out.innerHTML = `<p>( x ${sign1} ${Math.abs(x1)} ) ( x ${sign2} ${Math.abs(x2)} )</p><p>x = ${x1}</p>`;
+      return;
+    }
+
+    else {
+      outHtml1 += `<p>แยกได้  : ( x ${sign1} ${Math.abs(x1)} ) ( x ${sign2} ${Math.abs(x2)} )</p><p>x = ${x1}</p><p>x = ${x2}</p>`;
     }
   }
   get_out.innerHTML = outHtml1;
@@ -162,30 +232,34 @@ function findation() {
       while (z >= 1) {
         z = num_f / y;
         if (Number.isInteger(z)) {
-          result.push(Number(z));
+          result.push(" " + Number(z) + " ");
         }
         y += 1;
       }
+
+      outHtml2 += '<p> ตัวประกอบของ ' + num_f + ' มีจำนวน ' + result.length + '</p>'
+      outHtml2 += '<p> ได้แก่ ' + result + '</p>'
+
       let count = result.length;
       let a = 0;
       let k = 0;
-      let num_line = "-";
       if (Number(numneed.value) > 0) { 
         while (count - a >= 1) {
           let b = result[a];
           let c = result[count - 1];
+          let num_line = "--";
           for (let i = 0; i < (num_f).toString().length; i++) {
             num_line += "-";
           }
           if (k == 0) {
-            outHtml2 += '<p> ตัวประกอบของ' + num_f + ' : ( ' + b + ' , ' + c + ' ) </p>';
+            outHtml2 += '<p> คู่อันดับที่คูณกันได้' + num_f + ' : ( ' + b + ' , ' + c + ' ) </p>';
             k += 1;
             a += 1;
             count -= 1;
           }
           else {
             
-            outHtml2 += '<p><-------------' + num_line + '> : ( ' + b + ' , ' + c + ' ) </p>';
+            outHtml2 += '<p><--------------' + num_line + '> : ( ' + b + ' , ' + c + ' ) </p>';
             a += 1;
             count -= 1;
           }
@@ -198,19 +272,20 @@ function findation() {
           let c = result[count - 1];
           if (k == 0) {
             outHtml2 += '<p> ตัวประกอบของ' + num_f + ' : ( ' + '-' + b + ' , ' + c + ' ) </p>';
-            outHtml2 += '<p><-------------' + num_line + '> : ( ' + b + ' , ' + '-' + c + ' ) </p>';
+            outHtml2 += '<p><--------------' + num_line + '> : ( ' + b + ' , ' + '-' + c + ' ) </p>';
             k += 1;
             a += 1;
             count -= 1;
           }
           else {
-            outHtml2 += '<p><-------------' + num_line + '> : ( ' + '-' + b + ' , ' + c + ' ) </p>';
-            outHtml2 += '<p><-------------' + num_line + '> : ( ' + b + ' , ' + '-' + c + ' ) </p>';
+            outHtml2 += '<p><--------------' + num_line + '> : ( ' + '-' + b + ' , ' + c + ' ) </p>';
+            outHtml2 += '<p><--------------' + num_line + '> : ( ' + b + ' , ' + '-' + c + ' ) </p>';
             a += 1;
             count -= 1;
           }
         } 
       }
+
       show_out.innerHTML = (outHtml2);
 }
 
@@ -573,7 +648,5 @@ function calculate() {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 
