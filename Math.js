@@ -74,6 +74,14 @@ function calculation2() {
 
 get_button2.addEventListener('click', calculation2);
 
+function reset1() {
+  document.getElementById('num_21').value = "";
+  document.getElementById('num_22').va;ie = "";
+  document.getElementById('num_23').value = "";
+  document.getElementById('num_24').value = "";
+  get_out2.innerHTML = "แสดงคำตอบที่นี่"
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //สมการกำลัง2
 
@@ -213,6 +221,13 @@ function calculation1() {
 
 get_button1.addEventListener('click', calculation1);
 
+function reset2() {
+  document.getElementById('num_11').value = '';
+  document.getElementById('num_12').value = '';
+  document.getElementById('num_13').value = '';
+  get_out.innerHTML = "แสดงคำตอบที่นี่";
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // หาตัวประกอบ
 let numneed = document.getElementById('num_need');
@@ -291,6 +306,11 @@ function findation() {
 
 run_but2.addEventListener('click', findation);
 
+function reset3() {
+  document.getElementById('num_need').value = "";
+  show_out.innerHTML = "แสดงคำตอบที่นี่"
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //ตรรกศาสตร์
 
@@ -327,6 +347,14 @@ function del_prapoj() {
 }
 
 del_button.addEventListener('click', del_prapoj);
+
+function reset4() {
+  document.getElementById('p').value = "";
+  document.getElementById('q').value = "";
+  document.getElementById('r').value = "";
+  document.getElementById('s').value = "";
+  show_res.innerHTML = "แสดงคำตอบที่นี่"
+}
 
 let get_button3 = document.getElementById('run_but4');
 let show_res = document.getElementById('show_out4');
@@ -568,8 +596,7 @@ function calculation3() {
       i -=1;
   }
   }
-  console.log(data)
-  show_res.innerHTML = ("<p>ค่าความจริง : " + data + "</p>");
+  show_res.innerHTML = ("<p>ค่าความจริง ≡ " + data + "</p>");
 }
 
 get_button3.addEventListener('click', calculation3);
