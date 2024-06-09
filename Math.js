@@ -76,7 +76,7 @@ get_button2.addEventListener('click', calculation2);
 
 function reset1() {
   document.getElementById('num_21').value = "";
-  document.getElementById('num_22').va;ie = "";
+  document.getElementById('num_22').value = "";
   document.getElementById('num_23').value = "";
   document.getElementById('num_24').value = "";
   get_out2.innerHTML = "แสดงคำตอบที่นี่"
