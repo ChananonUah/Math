@@ -76,7 +76,7 @@ get_button2.addEventListener('click', calculation2);
 
 function reset1() {
   document.getElementById('num_21').value = "";
-  document.getElementById('num_22').value = "";
+  document.getElementById('num_22').va;ie = "";
   document.getElementById('num_23').value = "";
   document.getElementById('num_24').value = "";
   get_out2.innerHTML = "แสดงคำตอบที่นี่"
@@ -285,6 +285,10 @@ function findation() {
         while (count - a >= 1) {
           let b = result[a];
           let c = result[count - 1];
+          let num_line = "";
+          for (let i = 0; i < (num_f).toString().length-1; i++) {
+            num_line += "-";
+          }
           if (k == 0) {
             outHtml2 += '<p> ตัวประกอบของ' + num_f + ' : ( ' + '-' + b + ' , ' + c + ' ) </p>';
             outHtml2 += '<p><--------------' + num_line + '> : ( ' + b + ' , ' + '-' + c + ' ) </p>';
@@ -676,4 +680,10 @@ function calculate() {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+function simplifyFraction(numerator, denominator) {
+  const gcd = (a01, b01) => (b01 === 0 ? a01 : gcd(b01, a01 % b01));
+  const commonDivisor = gcd(numerator, denominator);
+  return [numerator / commonDivisor, denominator / commonDivisor];
+}
 
+console.log(simplifyFraction(-166, 276))
