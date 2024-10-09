@@ -252,13 +252,12 @@ function findation() {
         y += 1;
       }
 
-      outHtml2 += '<p> ตัวประกอบของ ' + num_f + ' มีจำนวน ' + result.length + '</p>'
-      outHtml2 += '<p> ได้แก่ ' + result + '</p>'
-
       let count = result.length;
       let a = 0;
       let k = 0;
       if (Number(numneed.value) > 0) { 
+        outHtml2 += '<p> ตัวประกอบของ ' + num_f + ' มี ' + result.length + ' มีจำนวน </p>'
+        outHtml2 += '<p> ได้แก่ ' + result + '</p>'
         while (count - a >= 1) {
           let b = result[a];
           let c = result[count - 1];
@@ -282,15 +281,16 @@ function findation() {
       }
 
       else {
+        outHtml2 += '<p> คู่อันดับที่คูณกันได้ของ -' + num_f + ' มี ' + result.length + ' แบบ </p>'
         while (count - a >= 1) {
           let b = result[a];
           let c = result[count - 1];
-          let num_line = "";
-          for (let i = 0; i < (num_f).toString().length-1; i++) {
+          let num_line = "---";
+          for (let i = 0; i < (num_f).toString().length; i++) {
             num_line += "-";
           }
           if (k == 0) {
-            outHtml2 += '<p> ตัวประกอบของ' + num_f + ' : ( ' + '-' + b + ' , ' + c + ' ) </p>';
+            outHtml2 += '<p> คู่อันดับที่คูณกันได้ -' + num_f + ' : ( ' + '-' + b + ' , ' + c + ' ) </p>';
             outHtml2 += '<p><--------------' + num_line + '> : ( ' + b + ' , ' + '-' + c + ' ) </p>';
             k += 1;
             a += 1;
