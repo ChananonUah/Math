@@ -243,7 +243,7 @@ function findation() {
       for (let i = 1; i <= num_f; i++) {
         z = num_f / i;
         if (Number.isInteger(z)) {
-          result.push(Number(z));
+          result.push(Number(i));
         }
       }
 
