@@ -432,7 +432,7 @@ function calculation3() {
 
   function and_bracket(tf, ft) {
     if (tf == "T" && ft == "T") {
-      data = data.replace("T∧T)","T)");
+      return data = data.replace("T∧T)","T)");
     }
     else if (tf == "T" && ft == "F") {
       return data = data.replace("T∧F)","F)");
