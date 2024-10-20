@@ -90,7 +90,7 @@ let get_out = document.getElementById('show_out1');
 
 function calculation1() {
   let a = Number(document.getElementById('num_11').value);
-  let b = Number(document.getElementById('num_12'));
+  let b = Number(document.getElementById('num_12').value);
   let c = Number(document.getElementById('num_13').value);
   let outHtml1 = '';
   let upper_num1 = 0;
@@ -120,7 +120,7 @@ function calculation1() {
     const commonDivisor = gcd(numerator, denominator);
     return [numerator / commonDivisor, denominator / commonDivisor];
   }
-
+  
   if ((b ** 2) - (4 * a * c) < 0) {
     get_out.innerHTML = '<p>ไม่มีคำตอบในระบบจำนวนจริง</p>';
     return;
@@ -477,16 +477,16 @@ function calculation3() {
 
   function even_if2(tf, ft) {
     if (tf == "T" && ft == "T") {
-      return data = data.replace("T↔T)","T");
+      return data = data.replace("T↔T)","T)");
     }
     else if (tf == "T" && ft == "F") {
-      return data = data.replace("T↔F)","F");
+      return data = data.replace("T↔F)","F)");
     }
     else if (tf == "F" && ft == "T") {
-      return data = data.replace("F↔T)","F");
+      return data = data.replace("F↔T)","F)");
     }
     else if (tf == "F" && ft == "F") {
-      return data = data.replace("F↔F)","T");
+      return data = data.replace("F↔F)","T)");
     }
   }
   function reject(ft) {
@@ -575,7 +575,6 @@ function calculation3() {
         data = data.substring(0,j) + data.substring(j+1, data.length)
       }
     }
-    console.log(data)
   }
   for (let i = 0; i < data.length; i++) {
     if (data[i] == "∧") {
