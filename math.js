@@ -82,19 +82,16 @@ function reset1() {
   get_out2.innerHTML = "แสดงคำตอบที่นี่"
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //สมการกำลัง2
 
-let get_num11 = document.getElementById('num_11');
-let get_num12 = document.getElementById('num_12');
-let get_num13 = document.getElementById('num_13');
 let get_button1 = document.getElementById('run_but1');
 let get_out = document.getElementById('show_out1');
 
 function calculation1() {
-  let a = Number(get_num11.value);
-  let b = Number(get_num12.value);
-  let c = Number(get_num13.value);
+  let a = Number(document.getElementById('num_11').value);
+  let b = Number(document.getElementById('num_12'));
+  let c = Number(document.getElementById('num_13').value);
   let outHtml1 = '';
   let upper_num1 = 0;
   let lower_num1 = 0;
@@ -235,7 +232,6 @@ let run_but2 = document.getElementById('run_but2');
 let show_out = document.getElementById('show_out2');
 
 function findation() {
-      let y = 1;
       let z = 1;
       let num_f = 0
       let result = [];
@@ -244,12 +240,11 @@ function findation() {
       if (num_f < 0) {
         num_f = Number(Math.abs(numneed.value));
       }
-      while (z >= 1) {
-        z = num_f / y;
+      for (let i = 1; i <= num_f; i++) {
+        z = num_f / i;
         if (Number.isInteger(z)) {
-          result.push(" " + Number(z) + " ");
+          result.push(Number(z));
         }
-        y += 1;
       }
 
       let count = result.length;
@@ -266,13 +261,12 @@ function findation() {
             num_line += "-";
           }
           if (k == 0) {
-            outHtml2 += '<p> คู่อันดับที่คูณกันได้' + num_f + ' : ( ' + b + ' , ' + c + ' ) </p>';
+            outHtml2 += '<p> คู่อันดับที่คูณกันได้ ' + num_f + ' : ( ' + b + ' , ' + c + ' ) </p>';
             k += 1;
             a += 1;
             count -= 1;
           }
           else {
-            
             outHtml2 += '<p><--------------' + num_line + '> : ( ' + b + ' , ' + c + ' ) </p>';
             a += 1;
             count -= 1;
@@ -378,7 +372,7 @@ function clearScreens() {
 function calculation3() {
   function and_func(tf, ft) {
     if (tf == "T" && ft == "T") {
-      data = data.replace("T∧T","T");
+      return data = data.replace("T∧T","T");
     }
     else if (tf == "T" && ft == "F") {
       return data = data.replace("T∧F","F");
@@ -483,16 +477,16 @@ function calculation3() {
 
   function even_if2(tf, ft) {
     if (tf == "T" && ft == "T") {
-      return data = data.replace("T↔T)","T)");
+      return data = data.replace("T↔T)","T");
     }
     else if (tf == "T" && ft == "F") {
-      return data = data.replace("T↔F)","F)");
+      return data = data.replace("T↔F)","F");
     }
     else if (tf == "F" && ft == "T") {
-      return data = data.replace("F↔T)","F)");
+      return data = data.replace("F↔T)","F");
     }
     else if (tf == "F" && ft == "F") {
-      return data = data.replace("F↔F)","T)");
+      return data = data.replace("F↔F)","T");
     }
   }
   function reject(ft) {
@@ -544,6 +538,7 @@ function calculation3() {
             }
             else {
               and_func(data[j-1], data[j+1]);
+              data_count -= 2
             }
           }
           else if (data[j] == "v") {
@@ -552,6 +547,7 @@ function calculation3() {
             }
             else {
               or_func(data[j-1], data[j+1]);
+              data_count -= 2
             }
           }
           else if (data[j] == "→") {
@@ -560,6 +556,7 @@ function calculation3() {
             }
             else {
               if_else1(data[j-1], data[j+1]);
+              data_count -= 2
             }
           }
           else if (data[j] == "↔") {
@@ -568,6 +565,7 @@ function calculation3() {
             }
             else {
               even_if1(data[j-1], data[j+1]);
+              data_count -= 2
             }
           }
           else if (data[j] == "~") {
@@ -577,6 +575,7 @@ function calculation3() {
         data = data.substring(0,j) + data.substring(j+1, data.length)
       }
     }
+    console.log(data)
   }
   for (let i = 0; i < data.length; i++) {
     if (data[i] == "∧") {
@@ -598,7 +597,7 @@ function calculation3() {
     else if (data[i] == "~") {
       reject(data[i+1])
       i -=1;
-  }
+    }
   }
   show_res.innerHTML = ("<p>ค่าความจริง ≡ " + data + "</p>");
 }
@@ -606,84 +605,3 @@ function calculation3() {
 get_button3.addEventListener('click', calculation3);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//เครื่องคิดเลข basic
-
-let show_calculator = document.getElementById("show_cal");
-let show_cal = ""
-
-function create_calculator() {
-  show_cal = `
-     <table class="calculator tool_cal">
-       <tr>
-         <td colspan="3"> <input class="display-box" type="text" id="result" disabled /> </td>
-
-         <!-- clearScreen() function clears all the values -->
-         <td> <input type="button" value="C" onclick="clearScreen()" id="btn" /> </td>
-         <td> <button onclick="closeScreen()" id="close_calcul" class="close_cal">close</button> </td>
-       </tr>
-       <tr>
-         <!-- display() function displays the value of clicked button -->
-         <td> <input class="butcal" type="button" value="1" onclick="display2('1')" /> </td>
-         <td> <input class="butcal" type="button" value="2" onclick="display2('2')" /> </td>
-         <td> <input class="butcal" type="button" value="3" onclick="display2('3')" /> </td>
-         <td> <input class="butcal" type="button" value="/" onclick="display2('/')" /> </td>
-         <td> <input class="butcal" type="button" value="root" onclick="display2('&#8730;')" /> </td>
-       </tr>
-       <tr>
-         <td> <input class="butcal" type="button" value="4" onclick="display2('4')" /> </td>
-         <td> <input class="butcal" type="button" value="5" onclick="display2('5')" /> </td>
-         <td> <input class="butcal" type="button" value="6" onclick="display2('6')" /> </td>
-         <td> <input class="butcal" type="button" value="-" onclick="display2('-')" /> </td>
-         <td> <input class="butcal" type="button" value="^" onclick="display2('^')" /> </td>
-       </tr>
-       <tr>
-         <td> <input class="butcal" type="button" value="7" onclick="display2('7')" /> </td>
-         <td> <input class="butcal" type="button" value="8" onclick="display2('8')" /> </td>
-         <td> <input class="butcal" type="button" value="9" onclick="display2('9')" /> </td>
-         <td> <input class="butcal" type="button" value="\+" onclick="display2('\+')" /> </td>
-         <td> <input class="butcal" type="button" value="log" onclick="display2('log')" /> </td>
-       </tr>
-       <tr>
-         <td> <input class="butcal" type="button" value="." onclick="display2('.')" /> </td>
-         <td> <input class="butcal" type="button" value="0" onclick="display2('0')" /> </td>
-
-         <!-- calculate() function evaluates the mathematical expression -->
-         <td> <input type="button" value="=" onclick="calculate()" id="btn" /> </td>
-         <td> <input class="butcal" type="button" value="*" onclick="display2('*')" /> </td>
-       </tr>
-     </table>
-     `
-  show_calculator.innerHTML = show_cal;
-
-}
-
-function closeScreen() {
-  show_cal = `<div id="show_cal">
-     <button class="tool_cal" onclick="create_calculator()"><img class="img_but1" src="https://cdn.icon-icons.com/icons2/317/PNG/512/calculator-icon_34473.png"></button>
-</div>`
-  show_calculator.innerHTML = show_cal;
-}
-
-function clearScreen() {
-  document.getElementById("result").value = "";
-}
-
-function display2(value) {
-  document.getElementById("result").value += value;
-}
-
-function calculate() {
-  var p = document.getElementById("result").value;
-  var q = eval(p);
-  document.getElementById("result").value = q;
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function simplifyFraction(numerator, denominator) {
-  const gcd = (a01, b01) => (b01 === 0 ? a01 : gcd(b01, a01 % b01));
-  const commonDivisor = gcd(numerator, denominator);
-  return [numerator / commonDivisor, denominator / commonDivisor];
-}
-
-console.log(simplifyFraction(-166, 276))
